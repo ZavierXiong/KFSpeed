@@ -1,0 +1,117 @@
+.el-message-box{
+  border:1px solid #ddd;
+}
+select,input{
+  outline: none;
+  margin:0;
+}
+#crm-content{
+  position:absolute;
+  left:202px;
+  top:55px;
+  right:0;
+  bottom:0;
+}
+.crm-content-opr{
+  height:36px;
+  line-height: 36px;
+  padding-left:20px;
+  .crm-content-opr-tip{
+    float:left;
+    font-size:12px;
+    .opr-btn{
+      padding:4px 10px;
+      color:#4180c3;
+    }
+    .opr-btn:hover{
+      background-color:#4180c3;
+      color:#fff;
+      cursor:pointer;
+    }
+  }
+}
+.crm-client-infoli{
+  .th{
+    line-height: 30px;
+    font-weight:normal;
+    text-align: left;
+    font-size:12px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #f5f5f5;
+    color: #999;
+    .scr{
+      width:112px;
+    }
+  }
+  .check{
+    vertical-align: middle;
+    width:30px;
+  }
+  .lastTime{
+    width:200px;
+  }
+  .firm-info{
+    width:350px;
+  }
+  .td{
+    text-align: left;
+    font-size:12px;
+    border-bottom: 1px solid #ddd;
+  }
+  .name-bg{
+    float: left;
+    display: inline-block;
+    width:30px;
+    height:30px;
+    background:url("../assets/images/male_user.png") no-repeat;
+    background-size:contain;
+  }
+  .info-p{
+    float: left;
+    width: 300px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-left: 10px;
+  }
+  .infoName,.email{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin:0;
+  }
+  .infoName{
+    cursor:pointer;
+    color: #1965b6;
+    margin-bottom:-10px;
+  }
+  .email{
+    color:#999999;
+  }
+}
+/*复用弹出框修改样式*/
+.smallLayer{
+  width: 350px;
+  .connectInfo{
+    width:200px;
+  }
+}
+/*领取提示框*/
+.getLayer{
+  .connectInfo{
+    width:570px;
+  }
+  .littleTip{
+    height:78px;
+    line-height: 28px;
+    overflow: auto;
+    padding: 20px;
+    font-size:12px;
+    span{
+      color:red;
+      font-size:24px;
+    }
+    .blue{
+      color:blue;
+    }
+  }
+}

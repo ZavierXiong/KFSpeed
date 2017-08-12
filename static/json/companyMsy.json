@@ -1,0 +1,18 @@
+{
+  "code": 100,
+  "extend": {
+    "dynamic_data": [
+      {"create_time":"2017-08-04 10:10:39","dynamicInfo":"今天周五","submit_user_name":"selena"},
+      {"create_time":"2017-08-04 10:10:26","dynamicInfo":"搭建vue","submit_user_name":"Tom"}
+    ],
+    "follow_data":[
+      {"create_time":"2017-08-04 00:00:00","followInfo":"今天跟进了","submit_user_name":"张三"},
+      {"create_time":"2017-08-04 11:19:00","followInfo":"又跟进了","submit_user_name":"张三"}
+    ],
+    "life_data":[
+      {"create_time":"2017-07-15 14:04:00","lifeInfo":"新建了该用户"},
+      {"create_time":"2017-08-04 14:04:00","lifeInfo":"修改了该用户"}
+    ]
+  },
+  "msg": "请求成功"
+}
