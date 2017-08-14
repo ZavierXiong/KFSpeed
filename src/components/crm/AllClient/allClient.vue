@@ -174,11 +174,11 @@
       @cntClose="showM = false"
       @cntConfirm="cntConfirm2"
       :client-list="false"
-      :my-index="clientList.value"
       :connect-tab="false"
       :tab-lists="tabLists"
       cnt-title="客户移动"
-      :has-button="true"></small-layer>
+      :has-button="true"
+      :has-rating="true"></small-layer>
     <!--点击进程出现弹框-->
     <small-layer
       class="smallLayer"
@@ -186,7 +186,6 @@
       @cntClose="showP = false"
       @cntConfirm="cntConfirm3"
       :client-list="proLists"
-      :my-index="clientList.value"
       :connect-tab="false"
       cnt-title="请选择销售进程"
       :has-button="true"></small-layer>

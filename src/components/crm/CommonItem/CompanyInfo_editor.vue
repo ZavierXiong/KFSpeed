@@ -207,11 +207,13 @@
       </tbody>
       <tbody>
       <tr>
-        <td class="ft2 cu-t">
-          <b>
-            <span>社交信息</span>
-          </b>&nbsp;
-          <span id="cus_span_id2" class="open-w" @click="showS = !showS">{{showS?'收缩':'展开'}}</span>
+        <td class="ft2 cu-t" colspan="2">
+          <div>
+            <b>
+              <span>社交信息</span>
+            </b>&nbsp;
+            <span id="cus_span_id2" class="open-w" @click="showS = !showS">{{showS?'收缩':'展开'}}</span>
+          </div>
         </td>
         <td class="cu-t" colspan="3"></td>
       </tr>
@@ -411,13 +413,16 @@
       </tr>
       </tbody>
     </table>
+    <div v-if="hasEditbtn">
+      <span class="confirm-btn">确认编辑</span>
+    </div>
   </div>
 
 </template>
 <script>
   export default({
     name:'newClientByhand',
-    props:['hasBusinessInfo','showW','showE'],
+    props:['hasBusinessInfo','showW','showE','hasEditbtn'],
     data(){
     return{
       hasVertify:false,
@@ -499,5 +504,18 @@
   .correct_icon{
   .error_icon;
     background:url("../../../assets/icon/onCorrect.gif") no-repeat;
+  }
+  .confirm-btn{
+    cursor:pointer;
+    padding: 3px 15px;
+    display: inline-block;
+    margin: 10px 5px 10px 5px;
+    background: #5bb75b;
+    border-radius: 3px;
+    color: #fff;
+    float:right;
+    &:hover{
+       background: #009933;
+    }
   }
 </style>

@@ -165,28 +165,49 @@
       clear:both;
       overflow:hidden;
       padding:10px 0 10px 10px;
-      border-bottom:1px dashed #ddd;
-      .client-bg{
-        display: inline-block;
-        width:40px;
-        height:40px;
-        margin:0 15px;
-        background:url("../assets/images/cmer.png") no-repeat;
-        background-size:contain;
+      .dt-li{
+        width:100%;
         float:left;
-      }
-      .more-createInfo{
-        float:left;
-        text-align: left;
-        font-size:12px;
-        .create-info{
-          .create-date{
-            color:#007dbc;
-            margin-left:5px;
+        padding: 10px 10px;
+        border-bottom: 1px dashed #ddd;
+        overflow: hidden;
+        .cancelStick{
+          cursor: pointer;
+          color: #005EAC;
+          &:hover{
+            color: #ff6600;
+            text-decoration: underline;
           }
         }
-        .create-follow{
-          line-height: 30px;
+        .client-bg{
+          display: inline-block;
+          width:40px;
+          height:40px;
+          margin:0 15px;
+          background:url("../assets/images/cmer.png") no-repeat;
+          background-size:contain;
+          float:left;
+        }
+        .more-createInfo{
+          float:left;
+          text-align: left;
+          font-size:12px;
+          width:630px;
+          .create-info{
+            span{
+              margin-right:5px;
+            }
+            .create-date{
+              color:#007dbc;
+              margin-left:5px;
+            }
+          }
+          .create-follow{
+            line-height: 30px;
+          }
+          .create-life{
+            word-wrap:break-word ;
+          }
         }
       }
     }

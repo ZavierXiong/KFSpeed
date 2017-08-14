@@ -11,8 +11,10 @@
         <newIndent></newIndent>
       </div>
       <span slot="footer" class="dialog-footer" v-if="hasButton">
-        <el-button type="primary"  @click="cntConfirm">确 定</el-button>
-        <el-button  @click="cntClose">取 消</el-button>
+        <div class="btn-box">
+          <el-button type="primary"  @click="cntConfirm">确 定</el-button>
+          <el-button  @click="cntClose">取 消</el-button>
+        </div>
       </span>
     </div>
   </div>
@@ -77,111 +79,5 @@
   }
 </script>
 
-<style lang="less">
-  .dialog-mask{
-    z-index: 2002;
-    background:url('../../../assets/icon/dialog_bg.png');
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    overflow: auto;
-    margin: 0;
-  }
-  .connectInfo {
-    position:fixed;
-    top:50%;
-    left:50%;
-    z-index:2003;
-    background-color:#fff;
-    transform:translate(-50%,-50%);
-    box-shadow: 0 1px 3px rgba(0,0,0,.3);
-  input{
-    margin:0;
-  }
-  .cnt-head{
-    overflow: hidden;
-    line-height: 14px;
-    font-size:14px;
-    background-color: #20A0FF;
-    padding: 10px 10px;
-    text-align: left;
-    color:#fff;
-  .el-icon-close{
-    float:right;
-    cursor:pointer;
-    font-size:14px;
-  }
-  }
-  .cnt-tab{
-    padding:10px 20px;
-    font-size:12px;
-    height:300px;
-    overflow: auto;
-  td{
-    padding-left: 5px;
-    line-height: 35px;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-  .fold{
-    user-select: none;
-    cursor:pointer;
-    display: inline-block;
-    width:12px;
-    height:12px;
-    background:url("../../../assets/icon/right.png");
-  }
-  .unfold{
-  .fold;
-    background:url("../../../assets/icon/wrong.png");
-  }
-  }
-  .td-title{
-    background-color: #f2f2f2;
-    height: 30px;
-    padding-right: 10px;
-    text-align: right;
-    width:50px;
-  }
-  .td-title.lm{
-    /*text-align: left;*/
-  }
-  .td-info{
-    text-align: left;
-  .selectDouble{
-    display: inline-block;
-    vertical-align: middle;
-  }
-  .importBox{
-    border: 1px solid #ddd;
-    height: 22px;
-    line-height: 22px;
-    width: 180px;
-  }
-  }
-  }
-  .clientLi{
-    height:200px;
-    overflow: auto;
-    padding: 10px 20px;
-    text-align:left;
-    font-size:12px;
-    font-weight:normal;
-  li{
-    line-height: 26px;
-  input{
-    vertical-align:middle;
-  }
-  }
-  }
-  .el-button{
-    height:24px;
-    margin:10px 5px 10px 0;
-    float:right;
-    padding:5px;
-    font-size:12px;
-  }
-  }
+<style lang="less" src="../../../less/common_layer.less"></style>
 
-</style>

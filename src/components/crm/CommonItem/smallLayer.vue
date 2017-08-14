@@ -47,7 +47,7 @@
       </div>
       <div v-if="tabLists" class="tab-content">
         <table>
-          <tr>
+          <tr v-if="hasRating">
             <td>客户星级</td>
             <td>
               <div class="block">
@@ -58,8 +58,8 @@
           <tr v-for="tab in tabLists">
             <td class="tabTitle">{{tab.title}}</td>
             <td class="tabSelect">
-              <select name="" id="">
-                <option v-for="option in tab.optionLists" value="">{{option.text}}</option>
+              <select name="" class="selected" v-model="tab.selected">
+                <option v-for="option in tab.optionLists" :value="option.value">{{option.text}}</option>
               </select>
             </td>
           </tr>
@@ -90,7 +90,9 @@
       'hasButton',
       'littleTip',
       'tabLists',
-      'newConnect'
+      'newConnect',
+      'hasRating',
+      'selected'
     ],
     methods:{
       cntClose:function(){
@@ -161,10 +163,6 @@
       .td-title.lm{
         text-align: left;
       }
-      .td-title.st{
-        letter-spacing: 13px;
-        padding-left: 14px;
-      }
       .td-info{
         text-align: left;
         .selectDouble{
@@ -199,7 +197,6 @@
         .el-button{
           height:24px;
           margin:10px 5px 10px 0;
-          /*float:right;*/
           padding:5px;
           font-size:12px;
         }
