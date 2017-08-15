@@ -27,20 +27,12 @@
     components:{
       newBusiness
     },
+    props:[
+      'hasButton'
+    ],
     data(){
     return{
-      value1:null,
-      hasVertify:false,
-      hasVertify2:false,
-      correct:false,
-      correct2:false,
-      showT:false,
-      value:"",
-      value2:"",
-      correctTitle:"恭喜，输入正确！！",
-      correctTitle2:"恭喜，该邮件地址可用！",
-      errorTitle:"2~50个字符之间!",
-      errorTitle2:"Email地址格式错误!"
+
     }
   },
   props:[
@@ -53,27 +45,6 @@
     },
     cntConfirm:function(){
       this.$emit('cntConfirm')
-    },
-    //    2-50个字符之间
-    vertify:function(){
-      this.hasVertify = true;
-      let val = this.value;
-      if(val.length<2||val.length>50){
-        this.correct = false;
-      } else{
-        this.correct = true;
-      }
-    },
-//    邮箱验证
-    vertify2:function(){
-      this.hasVertify2 = true;
-      let val = this.value2;
-      let re = /^[0-9A-Za-z][\.-_0-9A-Za-z]*@[0-9A-Za-z]+(\.[0-9A-Za-z]+)+$/;
-      if(re.test(val)){
-        this.correct2 = true;
-      } else{
-        this.correct2 = false;
-      }
     }
   }
   }

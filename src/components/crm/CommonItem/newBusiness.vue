@@ -35,7 +35,7 @@
         </td>
         <td>
           <el-date-picker
-            v-model="value1"
+            v-model="dateValue"
             type="date"
             >
           </el-date-picker>
@@ -56,7 +56,7 @@
           <span>预成交金额</span>
         </td>
         <td>
-          <input type="text" @blur="vertify()" v-model="value"/>
+          <input type="text" @blur="vertify()" v-model="value1"/>
           <span
             v-show="hasVertify"
             :title="correct?correctTitle:errorTitle"
@@ -112,7 +112,7 @@
       correctTitle:"恭喜，输入正确！！",
       hasVertify:false,
       correct:false,
-      value:"",
+      value1: '',
       pickerOptions1: {
         shortcuts: [{
           text: '今天',
@@ -121,7 +121,7 @@
          }
         }]
       },
-      value1: '',
+      dateValue:'',
       clientList:[
         {
           name:"权威",
@@ -139,7 +139,7 @@
   methods:{
     vertify:function(){
       this.hasVertify = true;
-      let val = this.value;
+      let val = this.value1;
       if(isNaN(val)||isNaN(parseInt(val))){
         this.correct = false;
       } else{

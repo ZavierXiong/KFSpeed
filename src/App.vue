@@ -122,7 +122,7 @@ export default {
 }
 *{
   outline: none;
-  user-select: none;
+  /*user-select: none;*/
   box-sizing:border-box;
 }
 body{
@@ -259,7 +259,6 @@ a{
     vertical-align: middle;
     width: 9px;
     height: 9px;
-    border:1px solid #ccc;
     margin-right:5px;
     background:url("./assets/icon/minus.png") no-repeat;
   }

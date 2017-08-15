@@ -8,7 +8,7 @@
         <span class="el-icon-close" @click="cntClose"></span>
       </div>
       <div class="cnt-tab" v-if="newConnect">
-        <table width="100%" cellpadding="0" cellspacing="0">
+        <table width="100%" cellpadding="0" cellspacing="0" >
           <tr v-if="isNewEdite">
             <td class="td-title lm">主联系人</td>
             <td class="td-info">
@@ -19,7 +19,7 @@
           <tr>
             <td class="td-title st"><span>姓名</span></td>
             <td class="td-info">
-              <input type="text" class="importBox"  @blur="vertify()" v-model="value"/>
+              <input type="text" class="importBox"  @blur="vertify()" v-model="connectionTab.name"/>
               <i class="red">*</i>
               <span
                 v-show="hasVertify"
@@ -30,7 +30,7 @@
           <tr>
             <td class="td-title st"><span>邮箱</span></td>
             <td class="td-info">
-              <input type="text" class="importBox"  @blur="vertify2()" v-model="value2"/>
+              <input type="text" class="importBox"  @blur="vertify2()" v-model="connectionTab.email"/>
               <i class="red">*</i>
               <span
                 v-show="hasVertify2"
@@ -41,7 +41,7 @@
           <tr>
             <td class="td-title st"><span>电话</span></td>
             <td class="td-info">
-              <input type="text" class="importBox"/>
+              <input type="text" class="importBox" v-model="connectionTab.tel"/>
               <i @click="showT = !showT" :class="[showT?'unfold':'fold']"></i>
             </td>
           </tr>
@@ -50,7 +50,7 @@
               <span>电话1</span>
             </td>
             <td class="td-info">
-              <input type="text" class="importBox">
+              <input type="text" class="importBox" v-model="connectionTab.tel"/>
             </td>
           </tr>
           <tr v-if="showT">
@@ -58,31 +58,31 @@
               <span>电话2</span>
             </td>
             <td class="td-info">
-              <input type="text" class="importBox">
+              <input type="text" class="importBox" v-model="connectionTab.tel"/>
             </td>
           </tr>
           <tr>
             <td class="td-title st"><span>手机</span></td>
-            <td class="td-info"><input type="text" class="importBox"/></td>
+            <td class="td-info"><input type="text" class="importBox" v-model="connectionTab.phone"/></td>
           </tr>
           <tr>
             <td class="td-title st"><span>职位</span></td>
-            <td class="td-info"><input type="text" class="importBox"/></td>
+            <td class="td-info"><input type="text" class="importBox" v-model="connectionTab.job"/></td>
           </tr>
           <tr>
             <td class="td-title st"><span>性别</span></td>
             <td class="td-info">
-              <input type="radio" name="sex" class="selectDouble"/>男
-              <input type="radio" name="sex" class="selectDouble"/>女
+              <input type="radio" name="sex" class="selectDouble" :checked="connectionTab.sex=='男'"/>男
+              <input type="radio" name="sex" class="selectDouble":checked="connectionTab.sex=='女'"/>女
             </td>
           </tr>
           <tr>
             <td class="td-title st"><span>地址</span></td>
-            <td class="td-info"><input type="text" class="importBox"/></td>
+            <td class="td-info"><input type="text" class="importBox" v-model="connectionTab.address"/></td>
           </tr>
           <tr>
             <td class="td-title st"><span>网址</span></td>
-            <td class="td-info"><input type="text" class="importBox"/></td>
+            <td class="td-info"><input type="text" class="importBox" v-model="connectionTab.url"/></td>
           </tr>
         </table>
       </div>
@@ -123,7 +123,8 @@
     'littleTip',
     'tabLists',
     'newConnect',
-    'isNewEdite'
+    'isNewEdite',
+    'connectionTab'
   ],
     methods:{
     cntClose:function(){
@@ -135,7 +136,7 @@
     //    2-50个字符之间
     vertify:function(){
       this.hasVertify = true;
-      let val = this.value;
+      let val = this.connectionTab.name;
       if(val.length<2||val.length>50){
         this.correct = false;
       } else{
@@ -145,7 +146,7 @@
 //    邮箱验证
     vertify2:function(){
       this.hasVertify2 = true;
-      let val = this.value2;
+      let val = this.connectionTab.email;
       let re = /^[0-9A-Za-z][\.-_0-9A-Za-z]*@[0-9A-Za-z]+(\.[0-9A-Za-z]+)+$/;
       if(re.test(val)){
         this.correct2 = true;

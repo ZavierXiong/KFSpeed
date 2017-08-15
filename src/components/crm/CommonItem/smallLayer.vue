@@ -32,7 +32,7 @@
       <div v-if="clientList" class="clientLi" >
         <ul>
           <li v-for="li in clientList" id="clientLi">
-            <input type="radio" name="clientName"  :checked="li.checked"/>{{li.name}}
+            <input type="checkbox"  :checked="li.checked"/>{{li.name}}
           </li>
         </ul>
       </div>

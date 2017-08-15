@@ -103,14 +103,15 @@
                     <th class="th" width="14%">手机</th>
                     <th class="th" width="10%">操作</th>
                   </tr>
-                  <tr v-for="tab in connectionTab" v-if="connectionTab.length > 0">
+                  <tr v-for="(tab,index) in connectionTab" v-if="connectionTab.length > 0">
                     <td width="5%" class="td spot-box"><span class="spot"></span></td>
                     <td class="td cnt-name" width="10%" ><a href="javascript:void(0);" @click="showC = true">{{tab.name}}</a></td>
                     <td class="td" width="15%">{{tab.email}}</td>
                     <td class="td" width="10%">{{tab.date}}</td>
                     <td class="td" width="10%">{{tab.tel}}</td>
                     <td class="td" width="14%">{{tab.phone}}</td>
-                    <td class="td" width="10%" @click="showEdite = true"><i class="update"></i></td>
+                    <!--<td class="td" width="10%" @click="showEdite = true"><i class="update"></i></td>-->
+                    <td class="td" width="10%" @click="linkEdit(index)"><i class="update"></i></td>
                   </tr>
                   <tr v-if="connectionTab.length == 0">
                     <td colspan="100%">
@@ -351,26 +352,29 @@
               class="module-linkman"
               v-if="showN"
               @cntClose="showN = false"
-              @cntConfirm="cntConfirm"
-              :new-connect="connectTab2"
-              :client-list="false"
-              cnt-title="联系人详情"
-              :has-button="true"></newLinkman>
-            <newLinkman
-              class="module-linkman"
-              v-if="showEdite"
-              @cntClose="showEdite = false"
-              @cntConfirm="cntConfirm"
+              @cntConfirm="cntConfirmNew"
               :new-connect="connectTab2"
               :client-list="false"
               cnt-title="新建联系人"
               :has-button="true"
-              :isNewEdite="false"></newLinkman>
+              :isNewEdite="true"
+              :connection-tab="newConnectionTab"></newLinkman>
+            <newLinkman
+              class="module-linkman"
+              v-if="showEdit"
+              @cntClose="showEdit = false"
+              @cntConfirm="cntConfirm3"
+              :new-connect="connectTab2"
+              :client-list="false"
+              cnt-title="编辑联系人"
+              :has-button="true"
+              :isNewEdite="false"
+              :connection-tab="connectionTab1"></newLinkman>
             <new-follow-layer
               class="layer-newFollow"
               v-if="showNFL"
               @cntClose="showNFL = false"
-              @cntConfirm="cntConfirm"
+              @cntConfirm="cntConfirmNew"
               cnt-title="新建跟进"
               :has-button="true"></new-follow-layer>
             <new-business-layer
@@ -404,7 +408,7 @@
                 <h3 class="title star-title">客户星级 <span class="rating-level">{{ratingLevel}}星</span></h3>
                 <div class="box-right-star-box">
                   <div class="block">
-                    <!--<el-rate v-model="ratingLevel"></el-rate>-->
+                    <el-rate v-model="ratingLevel"></el-rate>
                   </div>
                 </div>
               </div>
@@ -452,7 +456,8 @@
     data()
   {
     return {
-      ratingLevel: '0',
+      myIndex : 0,
+      ratingLevel: 0,
       activeName: 'second',
       selectVal: [
         {text: '手机、通讯录'},
@@ -469,7 +474,7 @@
       showC: false,
       showN: false,
       showM: false,
-      showEdite: false,
+      showEdit: false,
       showNFL: false,
       showNBL: false,
       showNIL: false,
@@ -651,22 +656,46 @@
           email: "sales@metalprices.com",
           date: "2016-04-23",
           tel: "无",
-          phone: "713 968 0023"
-        },
-        {
-          name: "sales",
+          phone: "713 968 0023",
+          job:'业务员',
+          sex:'男',
+          address:'深圳市龙岗区科飞时速',
+          url:'www.yiwaixiao.com'
+        },{
+          name: "hello",
           email: "sales@metalprices.com",
           date: "2016-04-23",
           tel: "无",
-          phone: "713 968 0023"
-        },
-        {
-          name: "sales",
+          phone: "713 968 0023",
+          job:'业务员',
+          sex:'男',
+          address:'深圳市龙岗区科飞时速',
+          url:'www.yiwaixiao.com'
+        },{
+          name: "joker",
           email: "sales@metalprices.com",
           date: "2016-04-23",
           tel: "无",
-          phone: "713 968 0023"
+          phone: "713 968 0023",
+          job:'业务员',
+          sex:'女',
+          address:'深圳市龙岗区科飞时速',
+          url:'www.yiwaixiao.com'
         },
+      ],
+      connectionTab1:'',
+      newConnectionTab:[
+        {
+          name: " ",
+          email: " ",
+          date: " ",
+          tel: " ",
+          phone: " ",
+          job:" ",
+          sex:" ",
+          address:" ",
+          url:" "
+        }
       ],
       getEmailTab: [
         {
@@ -1040,40 +1069,56 @@
     handleClick(tab, event)
     {
 //      console.log(tab, event);
-    }
-  ,
-    close:function () {
+    },
+    close(){
       this.$emit('closeInfo', false)
-    }
-  ,
-    cntConfirm:function () {
+    },
+    cntConfirm(){
       this.showN = false;
-      this.showEdite = false;
       this.showNFL = false;
       this.showNBL = false;
       this.showNIL = false;
-    }
-  ,
-    cntConfirm2:function () {
+    },
+    cntConfirm2(){
       this.selectVal = [];
       let len = this.tipLists.length;
       for (var i = 0; i < len; i++) {
         this.selectVal.push({text: $('.selected option:selected')[i].text});
         this.showM = false;
       }
-    }
-  ,
-    submitDt:function () {
+    },
+    cntConfirm3(){
+      let i = this.myIndex;
+      let cTb = this.connectionTab;
+      let result= $.extend(true,cTb[i],this.connectionTab1);
+      cTb[i] = result;
+      this.showEdit = false;
+    },
+    cntConfirmNew(){
+      console.log(this.newConnectionTab[0])
+    },
+    submitDt(){
       this.dtTab.push({date: this.myDate, life: this.textarea})
       this.textarea = ''
-    }
-  ,
-    tabChange:function (v) {
+    },
+    tabChange(v){
       this.tabCheck = v;
+    },
+    linkEdit(index){
+      this.myIndex = index;
+      let cTb = this.connectionTab;
+      this.showEdit = true;
+      for(var i=0;i<cTb.length;i++){
+          if(i==index){
+            //深度拷贝
+            let result= $.extend(true,this.connectionTab1,cTb[i]);
+            this.connectionTab1 = result;
+          }
+      }
     }
   },
   filters: {
-    time:function (input) {
+    time (input) {
       var d = new Date(input);
       var year = d.getFullYear();
       var month = d.getMonth() + 1;

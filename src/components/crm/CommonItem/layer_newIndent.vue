@@ -45,6 +45,7 @@
   },
   props:[
     'cntTitle',
+    'hasButton',
     'hasButton'
   ],
     methods:{
@@ -57,7 +58,7 @@
     //    2-50个字符之间
     vertify:function(){
       this.hasVertify = true;
-      let val = this.value;
+      let val = this.value1;
       if(val.length<2||val.length>50){
         this.correct = false;
       } else{

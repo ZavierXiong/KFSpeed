@@ -18,7 +18,7 @@
           <span>企业全称</span>
         </td>
         <td width="220">
-          <input type="text" class="custx" @blur="vertify()" v-model="value">
+          <input type="text" class="custx" @blur="vertify()" v-model="value1">
           <span class="red">*</span>
           <span
             v-show="hasVertify"
@@ -80,7 +80,7 @@
         <td>
           <div class="block custx hasDatepicker">
             <el-date-picker
-              v-model="value1"
+              v-model="dateValue"
               type="date"
               placeholder="选择日期时间">
             </el-date-picker>
@@ -436,7 +436,8 @@ export default({
       errorTitle:"4~200个字符之间!",
       errorTitle2:"2~50个字符之间!",
       errorTitle3:"Email地址格式错误！",
-      value:"",
+      value1: '',
+      value2: '',
       value01:"",
       value02:"",
       pickerOptions1: {
@@ -447,15 +448,14 @@ export default({
           }
         }]
       },
-      value1: '',
-      value2: ''
+      dateValue: ''
     }
   },
   methods:{
 //    4-200个字符之间
     vertify:function(){
       this.hasVertify = true;
-      let val = this.value;
+      let val = this.value1;
       if(val.length<4||val.length>200){
         this.correct = false;
       } else{

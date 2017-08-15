@@ -28,12 +28,12 @@
         <td class="usz">跟进时间</td>
         <td colspan="3">
           <el-date-picker
-            v-model="value1"
+            v-model="dateValue"
             type="date"
            >
           </el-date-picker>
           <el-time-picker
-            v-model="value2"
+            v-model="timeValue"
             :picker-options="{
       selectableRange: '00:00:00 - 23:59:59'
     }"
@@ -98,7 +98,6 @@ export default({
     return{
       showC:false,
       picked:false,
-      value:'',
       clientList:[
         {
           name:"权威",
@@ -116,8 +115,8 @@ export default({
           }
         }]
       },
-      value1: '',
-      value2: new Date(2016, 9, 10, 18, 40)
+      dateValue: '',
+      timeValue: new Date(2016, 9, 10, 18, 40)
     }
   },
   components:{

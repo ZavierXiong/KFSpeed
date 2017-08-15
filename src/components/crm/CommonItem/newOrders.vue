@@ -23,7 +23,7 @@
         </td>
         <td>
           <el-date-picker
-            v-model="value1"
+            v-model="dateValue"
             type="date"
             >
           </el-date-picker>
@@ -32,7 +32,7 @@
           <span>成交金额</span>
         </td>
         <td>
-          <input type="text" @blur="vertify()" v-model="value"/>
+          <input type="text" @blur="vertify()" v-model="value1"/>
           <span
             v-show="hasVertify"
             :title="correct?correctTitle:errorTitle"
@@ -102,6 +102,7 @@
         }
         }]
       },
+      dateValue: '',
       value1: '',
       value2: '',
       clientList:[
@@ -121,7 +122,7 @@
   methods:{
     vertify:function(){
       this.hasVertify = true;
-      let val = this.value;
+      let val = this.value1;
       if(isNaN(val)||isNaN(parseInt(val))){
         this.correct = false;
       } else{
