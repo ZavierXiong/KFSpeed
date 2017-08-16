@@ -90,7 +90,7 @@
             <th height="30" class="th">
               <div style="width:360px;">
                 <span>企业信息</span>
-                <i class="sortIcon" title="按日期排序"></i>
+                <i class="sortIcon" title="按日期排序" @click="dateSort"></i>
               </div>
             </th>
             <th height="30" class="th">
@@ -188,7 +188,8 @@
       :client-list="proLists"
       :connect-tab="false"
       cnt-title="请选择销售进程"
-      :has-button="true"></small-layer>
+      :has-button="true"
+      :is-course="true"></small-layer>
     <!--新建跟进弹框-->
     <createFollow v-if="showF" @close="showF=false"></createFollow>
     <moreInfoEdit v-if="showN" @closeInfo="showN = false"></moreInfoEdit>
@@ -287,6 +288,12 @@
             infoEmail:"Service@wholesale-lingerie.cn",
             date:"2017-07-24",
             lastDate:"2017-07-24"
+          },{
+            course:"无",
+            infoTitle:"Quanzhou Dear Lover Fashion Apparel Co., Ltd.",
+            infoEmail:"Service@wholesale-lingerie.cn",
+            date:"2017-07-24",
+            lastDate:"2017-05-25"
           }
         ],
         selectTabs:[
@@ -586,7 +593,6 @@
       moreInfoEdit
     },
     methods:{
-
       handleCommand:function(command){
         switch (command){
           case 'a':
@@ -702,6 +708,19 @@
       },
       showMenu:function(index){
         this.itemNum = index;
+      },
+      dateSort(){
+//        let info = this.infoLists;
+//        for(var i=0;i<info.length;i++){
+//          var minDate = new Date(info[i].date).getTime();
+//          for(var j=0;j<info.length;j++){
+//            var maxDate = new Date(info[j].date).getTime();
+//            if(minDate<=maxDate){
+//              info.splice()
+//            }
+//          }
+//        }
+//        console.log(pDate)
       }
     }
   })

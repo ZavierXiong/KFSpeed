@@ -37,7 +37,7 @@
           <tr>
             <td width="100" class="crm-oItab-left">支持xls|xlsx|csv</td>
             <td colspan="3" class="crm-oItab-right">
-              <a href="#"><span>普通导入样例</span></a>
+              <a href="javascript:void(0);"><span>普通导入样例</span></a>
               <span class="red">(不严格要求参照该样例)</span>
             </td>
           </tr>

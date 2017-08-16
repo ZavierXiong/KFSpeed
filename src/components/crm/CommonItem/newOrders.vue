@@ -15,7 +15,7 @@
           </select>
         </td>
         <td class="cu_tbg "><span>成交产品</span></td>
-        <td><span class="pSelect" @click="showC = true">请选择</span></td>
+        <td><span @click="selectProduct" class="pSelect">{{productNum==0?'请选择':'选择了'+productNum+'个产品'}}</span></td>
       </tr>
       <tr>
         <td class="cu_tbg ">
@@ -85,6 +85,8 @@
     name:"newFollow",
     data(){
     return{
+      arr:[],
+      productNum:0,
       showC:false,
       errorTitle:"恭喜，该客户名称可用！",
       correctTitle:"恭喜，输入正确！！",
@@ -138,8 +140,29 @@
         this.correct2 = true;
       }
     },
-    cntConfirm:function(){
+    cntConfirm(){
+      let cL=this.clientList;
+      let arr = this.arr;
+      for(var i=0;i<cL.length;i++){
+        if(cL[i].checked == true&& arr.indexOf(i)==-1){
+          arr.push(i);
+        }else if(cL[i].checked == false){
+          arr.splice(i)
+        }
+      }
+      this.productNum = arr.length;
       this.showC = false;
+    },
+    selectProduct(){
+      let cL=this.clientList;
+      let arr = this.arr;
+      for(var i=0;i<cL.length;i++){
+        cL[i].checked = false;
+        for(var j=0;j<arr.length;j++){
+          cL[arr[j]].checked=true;
+        }
+      }
+      this.showC = true;
     }
   }
   })

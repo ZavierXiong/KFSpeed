@@ -20,7 +20,7 @@
             <option value="">网络联系</option>
           </select>
           <span  class="rsp" v-show="!picked">
-            <input type="checkbox"/>是否自动执行
+            <input type="checkbox" v-model="isAuto"/>是否自动执行
           </span>
         </td>
       </tr>
@@ -64,7 +64,7 @@
           </select>
         </td>
       </tr>
-      <tr>
+      <tr v-if="!isAuto">
         <td class="cu_tbg">跟进内容</td>
         <td colspan="3">
           <textarea name="" id="" cols="30" rows="10" class="f-content">
@@ -72,10 +72,29 @@
           </textarea>
         </td>
       </tr>
+      <tr v-if="isAuto">
+        <td>邮件主题</td>
+        <td>
+          <input type="text"/>
+          <select name="" id="">
+            <option value="">
+              （不使用模板）
+            </option>
+          </select>
+        </td>
+      </tr>
+      <tr v-if="isAuto">
+        <td>
+          邮件内容
+        </td>
+        <td>
+          <textarea name="" id="mailP_ReplyContext" ></textarea>
+        </td>
+      </tr>
       <tr>
         <td class="usz">关联产品</td>
         <td colspan="3">
-          <span @click="showC = true" class="pSelect">请选择</span>
+          <span @click="selectProduct" class="pSelect">{{productNum==0?'请选择':'选择了'+productNum+'个产品'}}</span>
         </td>
       </tr>
     </table>
@@ -90,6 +109,11 @@
         :has-button="true"></small-layer>
   </div>
 </template>
+<script src="../../../assets/kindeditor-4.1.10/kindeditor.js"></script>
+<script>
+  //初始化编辑器
+
+</script>
 <script>
 import smallLayer from "./smallLayer.vue"
 export default({
@@ -98,13 +122,30 @@ export default({
     return{
       showC:false,
       picked:false,
-      clientList:[
+      productNum:0,
+      isAuto:false,
+      arr:[],
+        clientList:[
         {
           name:"权威",
-          checked:true
+          checked:false,
+          values:'jack'
         }, {
           name:"权威1",
-          checked:false
+          checked:false,
+            values:'jack1'
+        }, {
+          name:"权威1",
+          checked:false,
+            values:'jack2'
+        }, {
+          name:"权威1",
+          checked:false,
+            values:'jack3'
+        }, {
+          name:"权威1",
+          checked:false,
+            values:'jack4'
         }
       ],
       pickerOptions1: {
@@ -123,8 +164,29 @@ export default({
     'small-layer':smallLayer
   },
   methods:{
-    cntConfirm:function(){
+    cntConfirm(){
+      let cL=this.clientList;
+      let arr = this.arr;
+      for(var i=0;i<cL.length;i++){
+        if(cL[i].checked == true&& arr.indexOf(i)==-1){
+          arr.push(i);
+        }else if(cL[i].checked == false){
+          arr.splice(i)
+        }
+      }
+      this.productNum = arr.length;
       this.showC = false;
+    },
+    selectProduct(){
+      let cL=this.clientList;
+      let arr = this.arr;
+      for(var i=0;i<cL.length;i++){
+          cL[i].checked = false;
+        for(var j=0;j<arr.length;j++){
+          cL[arr[j]].checked=true;
+        }
+      }
+      this.showC = true;
     }
   }
 })

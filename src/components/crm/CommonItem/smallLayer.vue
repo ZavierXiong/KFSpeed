@@ -32,7 +32,10 @@
       <div v-if="clientList" class="clientLi" >
         <ul>
           <li v-for="li in clientList" id="clientLi">
-            <input type="checkbox"  :checked="li.checked"/>{{li.name}}
+            <!--<input type="checkbox"  :checked="li.checked"/>{{li.name}}-->
+            <input type="checkbox"  v-model="li.checked" v-if="!isCourse"/>
+            <input type="radio" name="course" v-if="isCourse"/>
+            <label for="">{{li.name}}</label>
           </li>
         </ul>
       </div>
@@ -92,7 +95,8 @@
       'tabLists',
       'newConnect',
       'hasRating',
-      'selected'
+      'selected',
+      'isCourse'
     ],
     methods:{
       cntClose:function(){
@@ -104,7 +108,6 @@
    }
   }
 </script>
-
 <style lang="less">
   .dialog-mask{
     z-index: 2002;
