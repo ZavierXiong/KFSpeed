@@ -180,13 +180,13 @@
     .error_icon{
       vertical-align: middle;
       display: inline-block;
-      width:22px;
-      height:22px;
-      background:url("../../../assets/icon/onError.gif") no-repeat;
+      width:18px;
+      height:18px;
+      background:url("/static/img/crm_images/icon/onError.gif") no-repeat;
     }
     .correct_icon{
     .error_icon;
-      background:url("../../../assets/icon/onCorrect.gif") no-repeat;
+      background:url("/static/img/crm_images/icon/onCorrect.gif") no-repeat;
     }
     td{
       font-size:12px;

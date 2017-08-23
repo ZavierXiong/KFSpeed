@@ -34,7 +34,7 @@
             <td width="20%" height="30">{{tab.date}}</td>
             <td width="20%" height="30">{{tab.type}}</td>
             <td width="20%" height="30">{{tab.status}}</td>
-            <td width="15%" height="30"><a href="javascript:void(0)">{{tab.result}}</a></td>
+            <td width="15%" height="30">{{tab.result}}</td>
             <td width="20%" height="30">{{tab.lost}}</td>
           </tr>
           </tbody>

@@ -1,6 +1,6 @@
 <template>
   <div id="newFollow" class="newFollow">
-    <div class="dialog-mask" v-if="test"></div>
+    <div class="dialog-masks" v-if="test"></div>
     <div class="alertContent">
       <el-dialog title="添加新业务" :visible.sync="test" size="tiny" class='yourName'>
         <!--此处添加你的弹框内容-->
@@ -74,9 +74,9 @@ export default ({
     .connectInfo{
       width:250px;
     }
-    .dialog-mask{
+    .dialog-masks{
       z-index: 2001;
-      background:url('../../../assets/icon/dialog_bg.png');
+      background:url('/static/img/crm_images/icon/dialog_bg.png');
       top: 0;
       right: 0;
       bottom: 0;

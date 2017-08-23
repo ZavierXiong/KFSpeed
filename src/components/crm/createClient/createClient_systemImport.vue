@@ -32,7 +32,7 @@
           </td>
         </tr>
         <tr v-show="showInfos">
-          <td width="100" class="crm-oItab-left">
+          <td width="107" class="crm-oItab-left">
             <span>选择第4列的信息</span>
           </td>
           <td colspan="3" class="crm-oItab-right">
@@ -45,7 +45,7 @@
         <tr>
           <td width="100" class="crm-oItab-left">支持xls|xlsx|csv</td>
           <td colspan="3" class="crm-oItab-right">
-            <a href="#" class="crm-system-example"><span>富通系统样例</span></a>
+            <a href="javascript:void(0);" class="crm-system-example"><span>富通系统样例</span></a>
           </td>
         </tr>
         </tbody>

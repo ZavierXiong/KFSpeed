@@ -122,7 +122,7 @@
         <td class="cu-empty" colspan="4"></td>
       </tr>
       <tr v-if="showW">
-        <td class="cu_tbg">
+        <td class="cu_tbg" width="82">
           <span >省份/州/区</span>
         </td>
         <td>
@@ -271,7 +271,7 @@
           <input type="text" class="custx" name="crmcustomer2.vk"></td>
       </tr>
       <tr id="shejiao_id5" v-if="showS">
-        <td class="cu_tbg">
+        <td class="cu_tbg" width="114">
           <span>Made In China</span>
         </td>
         <td>
@@ -497,20 +497,20 @@
     vertical-align: middle;
     margin-top: -6px;
     display: inline-block;
-    width:22px;
-    height:22px;
-    background:url("../../../assets/icon/onError.gif") no-repeat;
+    width:18px;
+    height:18px;
+    background:url("/static/img/crm_images/icon/onError.gif") no-repeat;
   }
   .correct_icon{
   .error_icon;
-    background:url("../../../assets/icon/onCorrect.gif") no-repeat;
+    background:url("/static/img/crm_images/icon/onCorrect.gif") no-repeat;
   }
   .confirm-btn{
     cursor:pointer;
     padding: 3px 15px;
     display: inline-block;
     margin: 10px 5px 10px 5px;
-    background: #5bb75b;
+    background: #66CC99;
     border-radius: 3px;
     color: #fff;
     float:right;

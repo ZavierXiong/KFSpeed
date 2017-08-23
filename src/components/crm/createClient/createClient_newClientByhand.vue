@@ -496,11 +496,11 @@ export default({
     display: inline-block;
     width:22px;
     height:22px;
-    background:url("../../../assets/icon/onError.gif") no-repeat;
+    background:url("/static/img/crm_images/icon/onError.gif") no-repeat;
   }
   .correct_icon{
     .error_icon;
-    background:url("../../../assets/icon/onCorrect.gif") no-repeat;
+    background:url("/static/img/crm_images/icon/onCorrect.gif") no-repeat;
   }
   .fold{
     user-select: none;
@@ -508,10 +508,10 @@ export default({
     display: inline-block;
     width:12px;
     height:12px;
-    background:url("../../../assets/icon/right.png");
+    background:url("/static/img/crm_images/icon/right.png");
   }
   .unfold{
   .fold;
-    background:url("../../../assets/icon/wrong.png");
+    background:url("/static/img/crm_images/icon/wrong.png");
   }
 </style>

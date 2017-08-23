@@ -1,6 +1,5 @@
 <template>
   <div class="crm-content-title">
-    <!--<span class="crm-content-site" v-for="title in myTitle">您的位置：{{title.name}}</span>-->
     <span class="crm-content-site" v-for="title in myTitle">您的位置：{{title.name}} <i class="refresh"></i></span>
     <div class="crm-content-search">
       <input class="crm-search-input" type="text"   placeholder="请输入客户或者联系人相关信息..."/>
@@ -25,7 +24,7 @@ export default ({
     float:left;
     font-size:14px;
     padding-left:18px;
-    background:url("../../../assets/icon/crm_location.png") no-repeat;
+    background:url("/static/img/crm_images/icon/crm_location.png") no-repeat;
   }
   .crm-content-search{
     float:right;
@@ -49,7 +48,7 @@ export default ({
     display: inline-block;
     width:45px;
     height:27px;
-    background:url("../../../assets/icon/ssj.png") -31px -6px no-repeat;
+    background:url("/static/img/crm_images/icon/ssj.png") -31px -6px no-repeat;
   }
   }
   }

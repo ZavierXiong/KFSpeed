@@ -4,7 +4,7 @@
     <!--点击显示-->
     <!--<button type="text" @click="opens">点击打开 </button>-->
     <!--弹框...修改外部div类名-->
-    <div class="dialog-mask"></div>
+    <div class="dialog-masks"></div>
     <div class="crm-moreInfo">
       <el-dialog title="客户详细信息" :visible.sync="test" size="tiny" class='yourName'>
         <!--此处添加你的弹框内容-->
@@ -26,7 +26,7 @@
               </ul>
               <div class="create-list">
                 <ul v-if="tabCheck == 0">
-                  <li>
+                  <li class="clst-li">
                     <div v-if="dtTab.length > 0">
                       <div v-for="(dt,$index) in dtTab">
                         <i class="client-bg"></i>
@@ -108,7 +108,7 @@
                 <td class="td" width="15%">{{tab.phone}}</td>
               </tr>
               <tr v-if="connectionTab.length == 0">
-                <td colspan="100%">
+                <td colspan="100%" class="noData-box">
                   <div class="noData-bg">
                   </div>
                   <span class="noData">暂无数据</span>
@@ -146,7 +146,7 @@
                 <td class="td" width="20%">{{tab.phone}}</td>
               </tr>
               <tr v-if="emailShow && getEmailTab.length == 0">
-                <td colspan="100%">
+                <td colspan="100%" class="noData-box">
                   <div class="noData-bg">
                   </div>
                   <span class="noData">暂无数据</span>
@@ -169,7 +169,7 @@
                 <td class="td" width="20%">{{tab.phone}}</td>
               </tr>
               <tr v-if="!emailShow && sendEmailTab.length == 0">
-                <td colspan="100%">
+                <td colspan="100%" class="noData-box">
                   <div class="noData-bg">
                   </div>
                   <span class="noData">暂无数据</span>
@@ -217,7 +217,7 @@
                 <td class="td">{{tab.tel}}</td>
               </tr>
               <tr v-if="!planShow && planTab.length == 0">
-                <td colspan="100%">
+                <td colspan="100%" class="noData-box">
                   <div class="noData-bg">
                   </div>
                   <span class="noData">暂无数据</span>
@@ -250,7 +250,7 @@
                 <td class="td">{{tab.tel}}</td>
               </tr>
               <tr v-if="!planShow && recordTab.length == 0">
-                <td colspan="100%">
+                <td colspan="100%" class="noData-box">
                   <div class="noData-bg">
                   </div>
                   <span class="noData">暂无数据</span>
@@ -282,7 +282,7 @@
                 <td class="td" width="10%">{{tab.phone}}</td>
               </tr>
               <tr v-if="businessTab.length == 0">
-                <td colspan="100%">
+                <td colspan="100%" class="noData-box">
                   <div class="noData-bg">
                   </div>
                   <span class="noData">暂无数据</span>
@@ -316,7 +316,7 @@
                 <td class="td" width="10%">{{tab.phone}}</td>
               </tr>
               <tr v-if="successTab.length == 0">
-                <td colspan="100%">
+                <td colspan="100%" class="noData-box">
                   <div class="noData-bg">
                   </div>
                   <span class="noData">暂无数据</span>
@@ -651,4 +651,4 @@
   }
   };
 </script>
-<style lang="less" src="../../../less/crmMoreInfo.less"></style>
+<style lang="less" src="../../../less/crm_less/crmMoreInfo.less"></style>

@@ -1,7 +1,7 @@
 <!--客户详细信息新建联系人-->
 <template>
   <div id="crm-connectInfo" >
-    <div class="dialog-mask"></div>
+    <div class="dialog-masks"></div>
     <div class="connectInfo">
       <div class="cnt-head">
         <span class="cnt-title">{{cntTitle}}</span>
@@ -49,4 +49,4 @@
   }
   }
 </script>
-<style lang="less" src="../../../less/common_layer.less"></style>
+<style lang="less" src="../../../less/crm_less/common_layer.less"></style>

@@ -1,6 +1,11 @@
 <template>
-  <div id="crm-content">
-    <searchBar :my-title="myTitle"></searchBar>
+  <div id="crm-content" class="crm-content">
+    <!--<searchBar :my-title="myTitle"></searchBar>-->
+    <div class="crm-content-title">
+      <span class="crm-content-site" v-for="title in myTitle">您的位置：{{title.name}} <i class="refresh"></i></span>
+      <!--搜索框-->
+      <common-search></common-search>
+    </div>
     <div class="crm-content-opr">
       <div class="crm-content-opr-tip">
         <span>操作：</span>
@@ -8,7 +13,7 @@
         <span class="opr-btn">单发邮件</span>
         <span class="opr-btn">邮件群发</span>
         <span  class="opr-btn" @click="modifyClient">修改分类</span>
-        <el-dropdown @command="handleCommand">
+        <el-dropdown trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
            更多操作<i class="el-icon-caret-bottom el-icon--right"></i>
           </span>
@@ -55,9 +60,19 @@
           <span v-if="tab.text9"><span>|</span><span class="opr-btn">{{tab.text9}}</span></span>
         </div>
         <div v-if="tab.search" class="search-bar">
-          <input type="text"/>
+          <el-date-picker
+            class="search-input"
+            v-model="dateValue"
+            type="date"
+            placeholder="">
+          </el-date-picker>
           <span>-</span>
-          <input type="text"/>
+          <el-date-picker
+            class="search-input"
+            v-model="dateValue2"
+            type="date"
+            placeholder="">
+          </el-date-picker>
           <span class="search-btn">查询</span>
         </div>
         <div v-if="tab.scope"   class="search-bar">
@@ -78,7 +93,7 @@
             </th>
             <th height="30" class="th">
               <div style="width:20px;margin-right:10px;">
-                <input type="checkbox" @click="selectAll"/>
+                <input type="checkbox" @click="selectAll" class="selectButton"/>
               </div>
             </th>
             <th height="30" class="th">
@@ -90,31 +105,31 @@
             <th height="30" class="th">
               <div style="width:360px;">
                 <span>企业信息</span>
-                <i class="sortIcon" title="按日期排序" @click="dateSort"></i>
+                <i class="sortIcon" title="按日期排序" @click="IndateSort"></i>
               </div>
             </th>
             <th height="30" class="th">
               <div style="width:120px;">
                 <span>客户星级</span>
-                <i class="sortIcon" title="按客户星级排序"></i>
+                <i class="sortIcon" title="按客户星级排序" @click="starSort"></i>
               </div>
             </th>
             <th width="10%" height="30" class="th">
               <div>
                 <span>入库时间</span>
-                <i class="sortIcon" title="按日期排序"></i>
+                <i class="sortIcon" title="按日期排序" @click="IndateSort"></i>
               </div>
             </th>
             <th width="10%" height="30" class="th">
               <div>
                 <span>最后联系</span>
-                <i class="sortIcon" title="按日期排序"></i>
+                <i class="sortIcon" title="按日期排序" @click="dateSort"></i>
               </div>
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(td,index) in infoLists" class="_tr">
+        <tr v-for="(td,index) in infoLists" class="_tr">
             <td height="50" class="td">
               <div style="width:10px;"></div>
             </td>
@@ -139,7 +154,8 @@
             </td>
             <td height="50" class="td">
               <div style="width:120px;">
-                <b class="star"></b>
+                <b class="star" v-for="star in td.stars" v-if="td.stars.length>0"></b>
+                <span v-if="td.stars.length == 0">暂无星级</span>
               </div>
             </td>
             <td width="10%" height="50" class="td">
@@ -150,6 +166,7 @@
             <td width="10%" height="50" class="td">
               <div>
                 <span>{{td.lastDate}}</span>
+                <!--<span>{{reverseMessage}}</span>-->
               </div>
             </td>
           </tr>
@@ -196,7 +213,8 @@
   </div>
 </template>
 <script>
-  import searchBar from "../CommonItem/searchBar.vue"
+//  import searchBar from "../CommonItem/searchBar.vue"
+  import commonSearch from '../CommonItem/commonSearch.vue'
   import smallLayer from "../CommonItem/smallLayer.vue"
   import createFollow from "./allClient-createFollow.vue"
   import moreInfoEdit from "../CommonItem/crmMoreInfo_Editor.vue"
@@ -204,7 +222,7 @@
     name:"crmContent",
     data(){
       return{
-        itemNum:0,
+        itemNum:-1,
         showF : false,
         showM : false,
         showP : false,
@@ -212,14 +230,12 @@
         hasShared:false,
         selectArr:[],
         showC:false,
-        myTitle:[{
-          name:" 全部客户 > 录入时间-降序 "
-        }],
         clientList:[
           {
             name:"权威",
             checked:true
-          }, {
+          },
+          {
             name:"权威1",
             checked:false
           }, {
@@ -279,21 +295,6 @@
           }, {
             name:"无",
             checked:false
-          }
-        ],
-        infoLists:[
-          {
-            course:"无",
-            infoTitle:"Quanzhou Dear Lover Fashion Apparel Co., Ltd.",
-            infoEmail:"Service@wholesale-lingerie.cn",
-            date:"2017-07-24",
-            lastDate:"2017-07-24"
-          },{
-            course:"无",
-            infoTitle:"Quanzhou Dear Lover Fashion Apparel Co., Ltd.",
-            infoEmail:"Service@wholesale-lingerie.cn",
-            date:"2017-07-24",
-            lastDate:"2017-05-25"
           }
         ],
         selectTabs:[
@@ -583,14 +584,29 @@
           {
 
           }
-        ]
+        ],
+        pickerOptions1: {
+          shortcuts: [{
+            text: '今天',
+            onClick(picker) {
+            picker.$emit('pick', new Date());
+            }
+          }]
+        },
+        dateValue: '',
+        dateValue2:''
       }
     },
+    props:[
+    'infoLists',
+    'myTitle'
+  ],
     components:{
-      searchBar,
+//      searchBar,
       smallLayer,
       createFollow,
-      moreInfoEdit
+      moreInfoEdit,
+      commonSearch
     },
     methods:{
       handleCommand:function(command){
@@ -710,20 +726,17 @@
         this.itemNum = index;
       },
       dateSort(){
-//        let info = this.infoLists;
-//        for(var i=0;i<info.length;i++){
-//          var minDate = new Date(info[i].date).getTime();
-//          for(var j=0;j<info.length;j++){
-//            var maxDate = new Date(info[j].date).getTime();
-//            if(minDate<=maxDate){
-//              info.splice()
-//            }
-//          }
-//        }
-//        console.log(pDate)
+        this.$emit('dateSort')
+      },
+      IndateSort(){
+        this.$emit('IndateSort')
+      },
+      starSort(){
+        this.$emit('starSort')
       }
+
     }
   })
 </script>
-<style lang="less" src="../../../less/allClient.less"></style>
+<style lang="less" src="../../../less/crm_less/allClient.less"></style>
 

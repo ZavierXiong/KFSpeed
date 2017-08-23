@@ -2,14 +2,14 @@
   <div id="newFollow">
     <table width="100%" cellspacing="0" cellpadding="0" class="newTab1">
       <tr>
-        <td class="usz">跟进类型</td>
+        <td class="newF-usz">跟进类型</td>
         <td colspan="3">
           <input type="radio" name="type" :checked="!picked" @click="picked = false"/>计划
           <input type="radio" name="type" :checked="picked" @click="picked = true"/>记录
         </td>
       </tr>
       <tr>
-        <td class="usz">
+        <td class="newF-usz">
           跟进类型
         </td>
         <td colspan="3">
@@ -25,7 +25,7 @@
         </td>
       </tr>
       <tr>
-        <td class="usz">跟进时间</td>
+        <td class="newF-usz">跟进时间</td>
         <td colspan="3">
           <el-date-picker
             v-model="dateValue"
@@ -53,7 +53,7 @@
         </td>
       </tr>
       <tr>
-        <td class="usz">销售进程</td>
+        <td class="newF-usz">销售进程</td>
         <td colspan="3">
           <select name="" id="">
             <option value="">报价</option>
@@ -92,12 +92,13 @@
         </td>
       </tr>
       <tr>
-        <td class="usz">关联产品</td>
+        <td class="newF-usz">关联产品</td>
         <td colspan="3">
           <span @click="selectProduct" class="pSelect">{{productNum==0?'请选择':'选择了'+productNum+'个产品'}}</span>
         </td>
       </tr>
     </table>
+    <transition name="fade">
       <small-layer
         class="smallLayer"
         v-if="showC"
@@ -107,9 +108,10 @@
         :connect-tab="false"
         cnt-title="转移公海客户"
         :has-button="true"></small-layer>
+    </transition>
+
   </div>
 </template>
-<script src="../../../assets/kindeditor-4.1.10/kindeditor.js"></script>
 <script>
   //初始化编辑器
 
@@ -201,9 +203,9 @@ export default({
         margin:0;
       }
     }
-    .usz{
+    .newF-usz{
       text-align: right;
-      width: 60px;
+      min-width: 60px;
       height: 28px;
       padding-right: 10px;
     }

@@ -1,6 +1,6 @@
 <template>
   <div id="createClient">
-    <div class="dialog-mask"></div>
+    <div class="dialog-masks"></div>
     <div class="createTab">
       <div class="cnt-head">
         <span class="cnt-title">添加新客户</span>
@@ -80,15 +80,15 @@
   #createClient{
     color:#444;
   }
-  .dialog-mask{
+  .dialog-masks{
     /*/!*display: none;*!/*/
     width: 100%;
     height: 100%;
     z-index: 619;
-    background:url('../../../assets/icon/dialog_bg.png');
+    background:url('/static/img/crm_images/icon/dialog_bg.png');
     margin: 0px;
     padding: 0px;
-    position:absolute;
+    position:fixed;
     top:0;
     left:0;
   }
@@ -221,7 +221,7 @@
     padding-right: 6px;
     .dialog-ok{
       border: 1px solid #33621D;
-      background: url("../../../assets/images/success.gif") top #88B674;
+      background: url("/static/img/crm_images/images/success.gif") top #88B674;
       height: 24px;
       line-height: 22px;
       color: #fff;

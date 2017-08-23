@@ -7,14 +7,14 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import VueRouter from 'vue-router'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
-//富文本编辑器
-import './assets/kindeditor-4.1.10/kindeditor.js'
-import './assets/kindeditor-4.1.10/themes/default/default.css'
-import './assets/kindeditor-4.1.10/themes/simple/simple.css'
-import './assets/kindeditor-4.1.10/lang/zh_CN.js'
-import './assets/kindeditor-4.1.10/lang/zh_TW.js'
 
+Vue.prototype.$ajax = axios
+
+Vue.use(axios)
+Vue.use(VueAxios,axios)
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 Vue.config.productionTip = false

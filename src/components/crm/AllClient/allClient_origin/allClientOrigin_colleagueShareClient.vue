@@ -1,0 +1,54 @@
+<template>
+  <share-component :td-lists="tdLists" :my-title="myTitle"></share-component>
+</template>
+<script>
+  import shareComponent from './commonShare.vue'
+  export default({
+    data(){
+      return{
+        myTitle:[
+          {name:'我的共享客户'}
+        ],
+        tdLists:[
+          {
+            info:'helloC',
+            infoEmail:'simon_tandava@yahoo.com',
+            tel:'无',
+            inDate:'2017-05-21',
+            shareDate:'2017-06-05',
+            lastDate:'2017-05-24',
+            shareTo:[
+              {name:'小蓝'}
+            ]
+          },{
+            info:'sunny',
+            infoEmail:'simon_tandava@yahoo.com',
+            tel:'无',
+            inDate:'2017-06-21',
+            shareDate:'2017-08-05',
+            lastDate:'2017-03-24',
+            shareTo:[
+              {name:'小吕'}
+            ]
+          },{
+            info:'rainy',
+            infoEmail:'simon_tandava@yahoo.com',
+            tel:'无',
+            inDate:'2017-07-21',
+            shareDate:'2017-05-05',
+            lastDate:'2017-09-24',
+            shareTo:[
+              {name:'小青'}
+            ]
+          },
+        ]
+      }
+    },
+    components:{
+      shareComponent
+    }
+  })
+</script>
+<style>
+
+</style>

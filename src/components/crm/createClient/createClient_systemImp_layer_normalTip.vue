@@ -1,6 +1,6 @@
 <template>
   <div id="crm-connectInfo" >
-    <div class="dialog-mask"></div>
+    <div class="dialog-masks"></div>
     <div class="connectInfo">
       <div class="cnt-head">
         <span class="cnt-title">{{cntTitle}}</span>
@@ -23,7 +23,7 @@
         </ul>
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button  @click="cntClose">取 消</el-button>
+        <el-button  @click="cntClose" style="margin-bottom:10px;">取 消</el-button>
       </span>
     </div>
   </div>
@@ -53,9 +53,9 @@
 </script>
 
 <style lang="less">
-  .dialog-mask{
+  .dialog-masks{
     z-index: 2002;
-    background:url('../../../assets/icon/dialog_bg.png');
+    background:url('/static/img/crm_images/icon/dialog_bg.png');
     top: 0;
     right: 0;
     bottom: 0;

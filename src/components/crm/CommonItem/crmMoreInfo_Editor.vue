@@ -6,7 +6,7 @@
     <!--<button type="text" @click="opens">点击打开 </button>-->
     <!--弹框...修改外部div类名-->
     <div class="crm-mif-content">
-      <div class="dialog-mask"></div>
+      <div class="dialog-masks"></div>
       <div class="crm-moreInfo crm-mif-ct">
         <el-dialog title="客户详细信息" :visible.sync="test" size="tiny" class='yourName'>
           <!--此处添加你的弹框内容-->
@@ -114,7 +114,7 @@
                     <td class="td" width="10%" @click="linkEdit(index)"><i class="update"></i></td>
                   </tr>
                   <tr v-if="connectionTab.length == 0">
-                    <td colspan="100%">
+                    <td colspan="100%" class="noData-box">
                       <div class="noData-bg">
                       </div>
                       <span class="noData">暂无数据</span>
@@ -152,7 +152,7 @@
                     <td class="td" width="20%">{{tab.phone}}</td>
                   </tr>
                   <tr v-if="emailShow && getEmailTab.length == 0">
-                    <td colspan="100%">
+                    <td colspan="100%" class="noData-box">
                       <div class="noData-bg">
                       </div>
                       <span class="noData">暂无数据</span>
@@ -175,7 +175,7 @@
                     <td class="td" width="20%">{{tab.phone}}</td>
                   </tr>
                   <tr v-if="!emailShow && sendEmailTab.length == 0">
-                    <td colspan="100%">
+                    <td colspan="100%" class="noData-box">
                       <div class="noData-bg">
                       </div>
                       <span class="noData">暂无数据</span>
@@ -226,7 +226,7 @@
                     <td class="td">{{tab.tel}}</td>
                   </tr>
                   <tr v-if="!planShow && planTab.length == 0">
-                    <td colspan="100%">
+                    <td colspan="100%" class="noData-box">
                       <div class="noData-bg">
                       </div>
                       <span class="noData">暂无数据</span>
@@ -259,7 +259,7 @@
                     <td class="td">{{tab.tel}}</td>
                   </tr>
                   <tr v-if="!planShow && recordTab.length == 0">
-                    <td colspan="100%">
+                    <td colspan="100%" class="noData-box">
                       <div class="noData-bg">
                       </div>
                       <span class="noData">暂无数据</span>
@@ -294,7 +294,7 @@
                     <td class="td" width="10%">{{tab.phone}}</td>
                   </tr>
                   <tr v-if="businessTab.length == 0">
-                    <td colspan="100%">
+                    <td colspan="100%" class="noData-box">
                       <div class="noData-bg">
                       </div>
                       <span class="noData">暂无数据</span>
@@ -331,7 +331,51 @@
                     <td class="td" width="10%">{{tab.phone}}</td>
                   </tr>
                   <tr v-if="successTab.length == 0">
-                    <td colspan="100%">
+                    <td colspan="100%" class="noData-box">
+                      <div class="noData-bg">
+                      </div>
+                      <span class="noData">暂无数据</span>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </el-tab-pane>
+              <el-tab-pane label="共享给" name="nineth" v-if="hasShare">
+                <table class="crm-connectionTab" cellspacing="0" cellpadding="0" width="100%">
+                  <tbody>
+                  <tr>
+                    <td colspan="3" class="connect-title"><span class="email-title">共享信息</span></td>
+                    <td>
+                      <div class="share-btn">
+                        <span class="mif-edt-newLinkman" @click="showP = true">共享给</span>
+                        <span class="mif-edt-newLinkman" @click="cancelAll">取消全部</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="th" height="30">
+                      <div style="width:10px;"></div>
+                    </th>
+                    <th class="th" height="30">
+                      <div style="width:150px;">
+                        用户名
+                      </div>
+                    </th>
+                    <th class="th" height="30">
+                      <div style="width:30px;"></div>
+                    </th>
+                    <th class="th" height="30">
+                      <div style="width:200px;">操作</div>
+                    </th>
+                  </tr>
+                  <tr v-for="(tab,index) in shareTab" v-if="shareTab.length > 0">
+                    <td class="td"></td>
+                    <td class="td">{{tab.name}}</td>
+                    <td class="td"></td>
+                    <td class="td cancel-btn" @click="cancelS(index)">取消共享</td>
+                  </tr>
+                  <tr v-if="shareTab.length == 0">
+                    <td colspan="100%" class="noData-box">
                       <div class="noData-bg">
                       </div>
                       <span class="noData">暂无数据</span>
@@ -402,6 +446,17 @@
               cnt-title="标签管理"
               :has-button="true"
               :has-rating="false"></connectInfo>
+            <!--点击进程出现弹框-->
+            <connect-info
+              class="smallLayer"
+              v-if="showP"
+              @cntClose="showP = false"
+              @cntConfirm="cntConfirmShowP"
+              :client-list="shareList"
+              :connect-tab="false"
+              cnt-title="请选择"
+              :has-button="true"
+              :is-course="false"></connect-info>
           </div>
           <div class="client-tips">
               <div class="box-right-k">
@@ -453,9 +508,13 @@
       'new-business-layer': newBusinessLayer,
       'new-indent-layer': newIndentLayer
     },
-    data()
-  {
+    props:[
+      'shareTab',
+      'hasShare'
+    ],
+    data(){
     return {
+      showP:false,
       myIndex : 0,
       ratingLevel: 0,
       activeName: 'second',
@@ -1061,6 +1120,19 @@
             }
           ]
         }
+      ],
+      shareList:[
+        {name:'小兰'},
+        {name:'小兰1'},
+        {name:'小兰2'},
+        {name:'小兰3'},
+        {name:'小兰4'},
+        {name:'小兰5'},
+        {name:'小兰6'},
+        {name:'小兰7'},
+        {name:'小兰8'},
+        {name:'小兰9'},
+        {name:'小兰10'}
       ]
     };
   }
@@ -1097,9 +1169,32 @@
     cntConfirmNew(){
       console.log(this.newConnectionTab[0])
     },
+    //点击共享给用户时，共享信息栏实时更新，用户选择栏实时减少
+    cntConfirmShowP(){
+      if($('.select-btn').is(':checked')){
+        let _this = this;
+        this.showP = false;
+        $('.select-btn:checked').siblings('label').each(function(){
+          _this.shareTab.push({name:$(this).text()})
+        })
+        for(var i=_this.shareList.length-1;i>=0;i--){
+          for(var j=_this.shareTab.length-1;j>=0;j--){
+            if(_this.shareTab[j]['name']==_this.shareList[i]['name']){
+                _this.shareList.splice(i,1);
+            }
+          }
+        }
+      }else{
+        alert('请选择您要共享给的客户！')
+      }
+    },
     submitDt(){
-      this.dtTab.push({date: this.myDate, life: this.textarea})
-      this.textarea = ''
+      if(this.textarea!=''){
+        this.dtTab.push({date: this.myDate, life: this.textarea})
+        this.textarea = ''
+      }else{
+        alert('请输入内容！')
+      }
     },
     tabChange(v){
       this.tabCheck = v;
@@ -1115,6 +1210,12 @@
             this.connectionTab1 = result;
           }
       }
+    },
+    cancelS(index){
+      this.$emit('cancelS',index)
+    },
+    cancelAll(){
+      this.$emit('cancelAlls');
     }
   },
   filters: {
@@ -1131,5 +1232,5 @@
   }
 }
 </script>
-<style lang="less" src="../../../less/crm_moreInfo_editor.less"></style>
-<style lang="less" src="../../../less/crmMoreInfo.less"></style>
+<style lang="less" src="../../../less/crm_less/crm_moreInfo_editor.less"></style>
+<style lang="less" src="../../../less/crm_less/crmMoreInfo.less"></style>
