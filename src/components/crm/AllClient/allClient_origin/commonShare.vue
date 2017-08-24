@@ -50,10 +50,15 @@
               <span>最后联系时间</span>
             </div>
           </th>
-          <th width="15%" height="30" class="th">
+          <th width="15%" height="30" class="th" v-if="!colleagueOption">
             <div>
               <span>共享给</span>
             </div>
+          </th>
+          <th width="15%" height="30" class="th" v-if="colleagueOption">
+            <select name="" id="" class="colleague-filter">
+              <option value="" v-for="option in colleagueOption">{{option.name}}</option>
+            </select>
           </th>
         </tr>
         </thead>
@@ -95,10 +100,15 @@
               <span>{{td.lastDate}}</span>
             </div>
           </td>
-          <td height="50" class="td">
+          <td height="50" class="td" v-if="!colleagueOption">
             <div>
               <span v-if="td.shareTo.length>1?false:true" v-for="item in td.shareTo">{{item.name}}</span>
               <span v-if="td.shareTo.length>1?true:false" class="share-colleague" @click="moreColleague(index)">{{td.shareTo.length}}个同事</span>
+            </div>
+          </td>
+          <td height="50" class="td" v-if="colleagueOption">
+            <div>
+              <span>{{td.whoShare}}</span>
             </div>
           </td>
         </tr>
@@ -571,7 +581,9 @@
   props:[
     'myTitle',
     'hasCancelShare',
-    'tdLists'
+    'tdLists',
+    'colleagueOption',
+    'whoShare'
   ],
     components:{
 //      searchBar,

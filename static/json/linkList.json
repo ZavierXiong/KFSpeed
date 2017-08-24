@@ -1,0 +1,17 @@
+[
+  code:'200'
+  {
+    linkList:[
+      {
+        name:'lan123ina',
+        job:'',
+        email:'	ina@yiwaixiao.com',
+        phone:'',
+        tel:'',
+        sex:'男',
+        address:'',
+        url:''
+      }
+    ]
+  }
+]

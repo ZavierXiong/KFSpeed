@@ -1,5 +1,10 @@
 <template>
-  <common-content :info-lists="infoLists" :my-title="myTitle"  @dateSort="dateSort(infoLists)" @IndateSort="IndateSort(infoLists)" @starSort="starSort(infoLists)"></common-content>
+  <common-content
+    :info-lists="infoLists"
+    :my-title="myTitle"
+    @dateSort="dateSort(infoLists)"
+    @IndateSort="IndateSort(infoLists)"
+    @starSort="starSort(infoLists)"></common-content>
 </template>
 <script>
   import commonContent from './allClient.vue'

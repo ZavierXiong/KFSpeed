@@ -25,6 +25,7 @@ import allClientOrigin_myShare from '../components/crm/AllClient/allClient_origi
 import allClientOrigin_colleagueShare from '../components/crm/AllClient/allClient_origin/allClientOrigin_colleagueShareClient.vue'
 import allClientOrigin_inWarehouse from '../components/crm/AllClient/allClient_origin/allClientOrigin_InWarehouse.vue'
 import allClientOrigin_unInWarehouse from '../components/crm/AllClient/allClient_origin/allClientOrigin_unInWarehouse.vue'
+import allClientOrigin_locationLinkMan from '../components/crm/AllClient/allClient_origin/common_locationLinkMan.vue'
 
 export default new Router({
   routes: [
@@ -54,6 +55,7 @@ export default new Router({
         {path:'allClientOrigin_colleagueShare',name:'allClientOrigin_colleagueShare',component:allClientOrigin_colleagueShare},
         {path:'allClientOrigin_inWarehouse',name:'allClientOrigin_inWarehouse',component:allClientOrigin_inWarehouse},
         {path:'allClientOrigin_unInWarehouse',name:'allClientOrigin_unInWarehouse',component:allClientOrigin_unInWarehouse},
+        {path:'allClientOrigin_locationLinkMan',name:'allClientOrigin_locationLinkMan',component:allClientOrigin_locationLinkMan},
       ]
     }
   ]

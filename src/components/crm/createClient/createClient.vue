@@ -69,7 +69,6 @@
 })
 </script>
 <style  rel="stylesheet/scss" lang="less">
-
   *{
     margin:0;
     padding:0;
@@ -107,29 +106,6 @@
       font-size:14px;
     }
   }
-    /*.bd-head{*/
-      /*margin-bottom:10px;*/
-      /*width:100%;*/
-      /*overflow:hidden;*/
-      /*background:url("../../assets/images/crmbt.png");*/
-      /*span{*/
-        /*text-indent:10px;*/
-        /*height:34px;*/
-        /*line-height: 34px;*/
-        /*float:left;*/
-        /*color:#fff;*/
-        /*font-size:14px;*/
-      /*}*/
-      /*i{*/
-        /*display: inline-block;*/
-        /*width:14px;*/
-        /*height:14px;*/
-        /*float:right;*/
-        /*margin:10px 10px;*/
-        /*cursor:pointer;*/
-        /*background:url("../../assets/icon/icon.png");*/
-      /*}*/
-    /*}*/
     .ct-con-box{
       padding:5px 5px 5px 0px;
     }
@@ -147,7 +123,7 @@
          }
       }
       .select-active{
-        background-color:#0480be;
+        background-color:#20a0ff;
         color:#fff;
       }
       .unselect-active{

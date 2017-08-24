@@ -29,6 +29,42 @@
           </tr>
         </table>
       </div>
+      <div class="cnt-tab" v-if="linkList">
+        <table width="100%" cellpadding="0" cellspacing="0" v-for="td in linkList">
+          <tr>
+            <td class="td-title">姓名</td>
+            <td class="td-info">{{td.name}}</td>
+          </tr>
+          <tr>
+            <td class="td-title">职位</td>
+            <td class="td-info">{{td.job}}</td>
+          </tr>
+          <tr>
+            <td class="td-title">邮箱</td>
+            <td class="td-info">{{td.email}}</td>
+          </tr>
+          <tr>
+            <td class="td-title">电话</td>
+            <td class="td-info">{{td.phone}}</td>
+          </tr>
+          <tr>
+            <td class="td-title">手机</td>
+            <td class="td-info">{{td.tel}}</td>
+          </tr>
+          <tr>
+            <td class="td-title">性别</td>
+            <td class="td-info">{{td.sex}}</td>
+          </tr>
+          <tr>
+            <td class="td-title">地址</td>
+            <td class="td-info">{{td.address}}</td>
+          </tr>
+          <tr>
+            <td class="td-title">网址</td>
+            <td class="td-info">{{td.url}}</td>
+          </tr>
+        </table>
+      </div>
       <div v-if="clientList" class="clientLi">
         <ul>
           <li v-for="li in clientList" id="clientLi">
@@ -118,7 +154,8 @@
       'selected',
       'isCourse',
       'hasShared',
-      'shareInfo'
+      'shareInfo',
+      'linkList'
     ],
     methods:{
       cntClose:function () {
@@ -200,6 +237,8 @@
       }
 
       .td-info {
+        max-width:185px;
+        word-wrap: break-word;
         text-align: left;
 
         .selectDouble {

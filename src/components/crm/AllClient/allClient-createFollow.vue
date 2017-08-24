@@ -133,7 +133,7 @@ export default ({
      }
     }
     .select-active{
-      background-color:#0480be;
+      background-color:#20a0ff;
       color:#fff;
     }
     .unselect-active{

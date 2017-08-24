@@ -172,6 +172,14 @@
           </tr>
         </tbody>
       </table>
+      <el-pagination
+        class="paging"
+        :current-page.sync="currentPage"
+        :page-sizes="[10, 20, 30, 40]"
+        :page-size="10"
+        layout="sizes, prev, pager, next"
+        :total="100">
+      </el-pagination>
     </div>
     <!--新建跟进中的请选择按钮弹框-->
     <small-layer
